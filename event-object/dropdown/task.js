@@ -25,3 +25,4 @@ document.addEventListener('click', () => {
         dropdownList.classList.remove('dropdown__list_active');
     });
 });
+
