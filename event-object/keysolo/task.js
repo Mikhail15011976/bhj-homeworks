@@ -17,6 +17,17 @@ class Game {
   }
 
   registerEvents() {
+    document.addEventListener('keyup', (event) => {
+      const inputChar = event.key;
+      const currentChar = this.currentSymbol.textContent;
+
+      if (inputChar.toLowerCase() === currentChar.toLowerCase()) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    });
+
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -28,7 +39,9 @@ class Game {
   }
 
   success() {
-    if(this.currentSymbol.classList.contains("symbol_current")) this.currentSymbol.classList.remove("symbol_current");
+    if(this.currentSymbol.classList.contains("symbol_current")) {
+    this.currentSymbol.classList.remove("symbol_current");
+    }
     this.currentSymbol.classList.add('symbol_correct');
     this.currentSymbol = this.currentSymbol.nextElementSibling;
 
@@ -71,8 +84,8 @@ class Game {
         'cinema',
         'love',
         'javascript'
-      ],
-      index = Math.floor(Math.random() * words.length);
+      ];
+      const index = Math.floor(Math.random() * words.length);
 
     return words[index];
   }
